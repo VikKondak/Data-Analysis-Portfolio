@@ -1,2 +1,3 @@
-# Goodreads-MyBooks-Analysis
-A brief overview of the books I've read through the years by analyzing my Goodreads entries.
+# Data Analysis Portfolio
+An ongoing portfolio containing projects developed for academic and professional purposes.
+
