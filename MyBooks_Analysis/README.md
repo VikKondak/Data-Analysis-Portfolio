@@ -220,3 +220,48 @@ Here is a preview of the new cleaned data,
 
 </p>
 
+## Number of Books read per Month
+
+This is a simple plot showing the nuber of books I've read each month. The year 2020 is a big outlier because that's when I installed Goodreads and I added a large number of books I'd already read.
+
+Brief explanation of how it was done:
+- The data_added column (dates when I finished the books) is converted to datetime.
+- Groupby function is used to group books on a monthly basis.
+
+### Code
+<details>
+<summary><strong>📄 View cleaning script</strong></summary>
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+#load data
+df = pd.read_csv("output/cleaned_books.csv")
+
+#convert date_added to datatime
+df["date_added"] = pd.to_datetime(df["date_added"], errors ='coerce')
+monthly = df.groupby(df['date_added'].dt.to_period('M')).size()
+print(monthly)
+
+
+#group monthly
+books_monthly = df.groupby(df['date_added'].dt.to_period('M')).size()
+
+print(books_monthly)
+
+books_monthly.plot(kind = 'bar', figsize=(12,5),title = "Books read each month (capped)")
+plt.ylim(0,10)
+plt.ylabel("Number of Books")
+yticks = np.linspace(0,10, num = 11)
+plt.yticks(yticks)
+plt.xlabel("Month")
+plt.tight_layout()
+plt.show()
+```
+</details>
+
+This is the generated plot.
+
+![My Image]("C:\Users\viken\OneDrive\Documents\python_learning\output\Figure_1.png")
