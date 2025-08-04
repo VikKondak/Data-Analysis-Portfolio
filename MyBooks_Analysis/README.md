@@ -76,3 +76,60 @@ df.to_csv('output/cleaned_books.csv', index=False)
 print("Cleaned data saved to output/cleaned_books.csv")
 print("Final shape:", df.shape)
 </details> ```
+
+This is an example (first rows) of the transformed data.
+<p style="overflow-x:auto;">
+
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+      <th>author</th>
+      <th>additional_authors</th>
+      <th>my_rating</th>
+      <th>average_rating</th>
+      <th>number_of_pages</th>
+      <th>year_published</th>
+      <th>date_read</th>
+      <th>date_added</th>
+      <th>bookshelves</th>
+      <th>exclusive_shelf</th>
+      <th>my_review</th>
+      <th>read_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Rebecca</td>
+      <td>Daphne du Maurier</td>
+      <td></td>
+      <td>5</td>
+      <td>4.25</td>
+      <td>449</td>
+      <td>2013</td>
+      <td></td>
+      <td>6/20/2020</td>
+      <td></td>
+      <td>read</td>
+      <td></td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>The Razor’s Edge</td>
+      <td>W. Somerset Maugham</td>
+      <td></td>
+      <td>5</td>
+      <td>4.19</td>
+      <td>314</td>
+      <td>2003</td>
+      <td></td>
+      <td>7/3/2025</td>
+      <td></td>
+      <td>read</td>
+      <td></td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+</p>
