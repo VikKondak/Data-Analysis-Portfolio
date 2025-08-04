@@ -264,4 +264,4 @@ plt.show()
 
 This is the generated plot.
 
-![My Image]("output/Figure_1.png")
+![My Image]("[output/Figure_1.png](https://github.com/VikKondak/Data-Analysis-Portfolio/blob/main/MyBooks_Analysis/output/Figure_1.png)")
