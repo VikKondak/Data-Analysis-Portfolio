@@ -75,9 +75,11 @@ df.to_csv('output/cleaned_books.csv', index=False)
 
 print("Cleaned data saved to output/cleaned_books.csv")
 print("Final shape:", df.shape)
-</details> ```
 
-This is an example (first rows) of the transformed data.
+ ```
+</details>
+
+Here is a preview of the new cleaned data,
 <p style="overflow-x:auto;">
 
 <table>
@@ -133,3 +135,4 @@ This is an example (first rows) of the transformed data.
 </table>
 
 </p>
+
