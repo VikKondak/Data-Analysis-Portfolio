@@ -370,3 +370,10 @@ plt.close()
 print("Average Publication Year per Year Read:\n", avg_pub_year)
 ```
 </details>
+
+## Possible Improvements
+- Add genre-based statistics
+- Add monthly reading goals tracking
+- Add sentiment analysis from reviews
+
+I really would have liked to to get a better insight on the genres of the books that I read but unfortunfately the Goodreads database does not include genres and I couldn't add all of them manually.
