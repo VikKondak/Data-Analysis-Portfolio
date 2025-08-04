@@ -264,4 +264,4 @@ plt.show()
 
 This is the generated plot.
 
-![My Image]("C:\Users\viken\OneDrive\Documents\python_learning\output\Figure_1.png")
+![My Image]("output/Figure_1.png")
