@@ -33,18 +33,19 @@ Brief explanation of what was cleaned:
 
 ### Code
 <details>
-<summary>Click to expand the data transforming code</summary>
+<summary><strong>📄 View cleaning script</strong></summary>
+
 ```python
 import pandas as pd
 
-#load data
+# Load data
 df = pd.read_csv("data/goodreads_library_export.csv")
 
-#show first shape and columns
-print("Initial shape:",df.shape)
+# Show initial shape and columns
+print("Initial shape:", df.shape)
 print("Initial columns:", df.columns)
 
-#delete uneccesary columns
+# Delete unnecessary columns
 dropped_cols = [
     'Book Id', 'ISBN', 'ISBN13', 'Publisher', 'Binding',
     'Author l-f', 'My Thoughts', 'Private Notes', 'Spoiler', 
@@ -52,21 +53,21 @@ dropped_cols = [
     'Original Publication Year', 'Bookshelves with positions',
     'Cover Image Url'
 ]
-df = df.drop(columns = [col for col in dropped_cols if col in df.columns])
+df = df.drop(columns=[col for col in dropped_cols if col in df.columns])
 
-#clean the columns
-df.columns = df.columns.str.strip().str.lower().str.replace(' ','_')
+# Clean the column names
+df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
 
-#convert date columns to datetime
-df['date_read'] = pd.to_datetime(df['date_read'],errors='coerce')
-df['date_added'] =pd.to_datetime(df["date_added"],errors='coerce')
+# Convert date columns to datetime
+df['date_read'] = pd.to_datetime(df['date_read'], errors='coerce')
+df['date_added'] = pd.to_datetime(df["date_added"], errors='coerce')
 
-#makeup for missing values
+# Fill in missing values
 df['number_of_pages'] = df['number_of_pages'].fillna(0).astype(int)
-df['my_rating']=df['my_rating'].fillna(0)
+df['my_rating'] = df['my_rating'].fillna(0)
 df['average_rating'] = df['average_rating'].fillna(0)
 
-#filter to one "read" books
+# Filter to only "read" books
 df = df[df['exclusive_shelf'] == 'read']
 
 # Save cleaned version
