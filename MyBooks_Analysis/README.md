@@ -220,7 +220,7 @@ Here is a preview of the new cleaned data,
 
 </p>
 
-## Number of Books read per Month
+## Number of Books Read per Month
 
 This is a simple plot showing the nuber of books I've read each month. The year 2020 is a big outlier because that's when I installed Goodreads and I added a large number of books I'd already read.
 
@@ -230,7 +230,7 @@ Brief explanation of how it was done:
 
 ### Code
 <details>
-<summary><strong>📄 View cleaning script</strong></summary>
+<summary><strong>📄 View script</strong></summary>
 
 ```python
 import pandas as pd
@@ -265,3 +265,108 @@ plt.show()
 This is the generated plot.
 
 ![Figure 1](output/Figure_1.png)
+
+## Average Rating Every Month (My Ratings)
+I calculated and visualized your average book rating (my_rating) grouped by each month when the book was added.
+
+Brief overview:
+- Converted date_added column to datetime.
+- Extracted the month period (.dt.to_period('M')) for grouping.
+- Grouped data by month and computed the mean of my ratings.
+- Used Pandas .plot() with kind='line' and markers to create a line plot showing rating trends over time.
+  
+ ![Figure 2](output/Figure_2.png) 
+
+## Total Pages Read per Year
+I summed the total number of pages read per year and displayed it as a bar chart.
+
+Brief overview:
+- Grouped data by year extracted from date_added (.dt.to_period('Y')).
+- Calculated the sum of number_of_pages for each year.
+- Used Pandas .plot() with kind='bar' to create a bar plot illustrating yearly reading volume.
+
+  ![Figure 3](output/Figure_3.png)
+
+
+  ## My Average Rating vs. Goodreads Average Rating Every Month
+I compared my monthly average ratings to Goodreads’ average ratings over time using a line      plot with two lines.
+
+Brief overview:
+- Calculated average ratings per month for both my ratings and Goodreads ratings separately via groupby on month.
+
+![Figure 4](output/Figure_4.png)
+
+## Average Publication Year of Books Read Per Year
+I computed and plotted the average publication year of books you read each calendar year.
+
+Brief overview:
+- Grouped the data by the calendar year from date_added (.dt.year).
+- Calculated the mean of year_published for each reading year.
+- Created a line plot with markers using Pandas .plot() to show if I tend to read newer or older books over time.
+
+![Figure 5](output/Figure_5.png)
+
+### Code
+<details>
+<summary><strong>📄 View script</strong></summary>
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("output/cleaned_books.csv")
+
+df['date_added'] = pd.to_datetime(df['date_added'], errors='coerce')
+
+
+# month periods
+df['month'] = df['date_added'].dt.to_period('M')
+
+#group every month
+avg_rating_halfyear= df.groupby('month')['my_rating'].mean()
+avg_goodrds_rating_halfyear = df.groupby('month')['average_rating'].mean()
+
+#plot 1 (my ratings)
+fig1 = avg_rating_halfyear.plot(kind='line', marker='o', title="Average Rating Every Month", figsize=(10, 5))
+plt.ylabel("My Rating")
+plt.xlabel("Monthly Periods")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+plt.close()
+#pages read over time plot 2
+fig2 = df.groupby(df['date_added'].dt.to_period('Y'))['number_of_pages'].sum().plot(kind='bar')
+plt.title("Total Pages Read per Year")
+plt.ylabel("Pages")
+plt.show()
+plt.close()
+#compare my ratings to goodreads ratings plot 3
+plt.figure(figsize=(10, 5))
+plt.plot(avg_rating_halfyear.index.astype(str), avg_rating_halfyear, marker='o', label='My Rating', color="red")
+plt.plot(avg_goodrds_rating_halfyear.index.astype(str), avg_goodrds_rating_halfyear, marker='s', label='Goodreads Rating', color='blue')
+plt.title("My Average Rating vs. Goodreads Average Rating Every Month")
+plt.ylabel("Average Rating")
+plt.xlabel("Monthly Periods")
+plt.grid(True)
+plt.legend()
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+plt.close()
+
+#plot 4 average published year of books ive read each year
+
+avg_pub_year= df.groupby(df['date_added'].dt.year)['year_published'].mean()
+plt.figure(figsize=(10,5))
+avg_pub_year.plot(kind='line', marker='o', title="Average Publication Year of Books Read Per Year")
+plt.ylabel("Average Publication Year")
+plt.xlabel("Year Read")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+plt.close()
+
+
+print("Average Publication Year per Year Read:\n", avg_pub_year)
+```
+</details>
