@@ -19,10 +19,94 @@ First, prepping my dataset.
 - Size: 516 rows, 24 columns
 - Example snippet:
 
-| Book Id  | Title                    | Author              | Author l-f           | Additional Authors | ISBN       | ISBN13        | My Rating | Average Rating |
-|----------|--------------------------|---------------------|----------------------|--------------------|------------|---------------|-----------|----------------|
-| 17899948 | Rebecca                  | Daphne du Maurier   | Maurier, Daphne du   |                    | 0316323705 | 9780316323703 | 5         | 4.25           |
-| 34606688 | Tales of Norse Mythology | Hoala ne A. Guerber | Guerber, Hoala¨ne A. |                    | 1435164989 | 9781435164987 | 0         | 3.91           |
+<p style="overflow-x:auto;">
+
+<table>
+  <thead>
+    <tr>
+      <th>Book Id</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Author l-f</th>
+      <th>Additional Authors</th>
+      <th>ISBN</th>
+      <th>ISBN13</th>
+      <th>My Rating</th>
+      <th>Average Rating</th>
+      <th>Publisher</th>
+      <th>Binding</th>
+      <th>Number of Pages</th>
+      <th>Year Published</th>
+      <th>Original Publication Year</th>
+      <th>Date Read</th>
+      <th>Date Added</th>
+      <th>Bookshelves</th>
+      <th>Bookshelves with positions</th>
+      <th>Exclusive Shelf</th>
+      <th>My Review</th>
+      <th>Spoiler</th>
+      <th>Private Notes</th>
+      <th>Read Count</th>
+      <th>Owned Copies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>17899948</td>
+      <td>Rebecca</td>
+      <td>Daphne du Maurier</td>
+      <td>Maurier, Daphne du</td>
+      <td></td>
+      <td>0316323705</td>
+      <td>9780316323703</td>
+      <td>5</td>
+      <td>4.25</td>
+      <td>Little, Brown and Company</td>
+      <td>Kindle Edition</td>
+      <td>449</td>
+      <td>2013</td>
+      <td>1938</td>
+      <td></td>
+      <td>6/20/2020</td>
+      <td></td>
+      <td></td>
+      <td>read</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>34606688</td>
+      <td>Tales of Norse Mythology</td>
+      <td>Hélène A. Guerber</td>
+      <td>Guerber, Hélène A.</td>
+      <td></td>
+      <td>1435164989</td>
+      <td>9781435164987</td>
+      <td>0</td>
+      <td>3.91</td>
+      <td>Barnes & Noble</td>
+      <td>Leather Bound</td>
+      <td>464</td>
+      <td>2017</td>
+      <td>1895</td>
+      <td></td>
+      <td>7/3/2025</td>
+      <td>to-read</td>
+      <td>to-read (#320)</td>
+      <td>to-read</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+
+</p>
 
 ## Data Cleaning & Transformation
 Brief explanation of what was cleaned:
